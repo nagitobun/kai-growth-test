@@ -1,0 +1,21 @@
+name: log-commit
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - "AI-Note/**"
+
+jobs:
+  add-learning-log:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Append commit message to 学習ログ
+        run: |
+          echo "### $(date --iso-8601=seconds)\n- $(git log -1 --pretty=format:%s)\n" >> AI-Note/学習ログ.md
+
+      - name: Commit learning log
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs(log): auto-append learning entry"
