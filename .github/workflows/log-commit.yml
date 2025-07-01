@@ -15,7 +15,7 @@ jobs:
         run: |
           mkdir -p AI-Note
           touch AI-Note/学習ログ.md
-          echo "### $(date --iso-8601=seconds)\n- $(git log -1 --pretty=format:%s)\n" >> AI-Note/学習ログ.md
+          echo -e "### $(date --iso-8601=seconds)\n- $(git log -1 --pretty=format:%s)\n" >> AI-Note/学習ログ.md
 
 
       - name: Commit learning log
